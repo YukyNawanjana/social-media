@@ -1,6 +1,7 @@
 <?php
     require 'config/config.php';
     require 'includes/form_handlers/register_handler.php';
+    require 'includes/form_handlers/login_handler.php';
 ?>
 
 
@@ -14,6 +15,15 @@
     <title>Welcome to Social</title>
 </head>
 <body>
+
+    <form action="register.php" method="POST">
+        <input type="email" name="log_email" placeholder="Email Address" value="<?php if(isset($_SESSION['log_email'])){ echo $_SESSION['log_email'];}?>" required>
+        <br>
+        <input type="password" name="log_password" placeholder="Password" required>
+        <br>
+        <?php if(in_array("Email or Password was incorect<br>", $error_array)) echo "Email or Password was incorect<br>";?>
+        <input type="submit" name="login_button" value="Log In">
+    </form>
 
     <form action="register.php" method="POST">
         <input type="text" name="reg_fname" placeholder="First Name" value="<?php if(isset($_SESSION['reg_fname'])){ echo $_SESSION['reg_fname'];}?>" required>
